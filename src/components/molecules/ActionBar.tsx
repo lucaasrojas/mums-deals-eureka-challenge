@@ -24,7 +24,6 @@ const ActionBar = () => {
 			<Typography>Available Deals: {deals.length}</Typography>
 			<Box sx={styles.buttons}>
 				<ViewSelector />
-				<Sorter />
 			</Box>
 		</Box>
 	);

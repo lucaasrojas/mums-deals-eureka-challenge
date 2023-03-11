@@ -1,14 +1,18 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import OptionGroup from "../molecules/OptionGroup";
 import { State, Deal } from "../../types";
+import Sorter from "../molecules/Sorter";
+import ViewSelector from "../molecules/ViewSelector";
 
 const styles = {
 	container: {
-		padding: 2,
+		padding: "24px",
 		display: "flex",
 		alignContent: "center",
+		justifyContent: "center",
+
 		position: "fixed",
 		top: 0,
 		left: 0,
@@ -32,7 +36,10 @@ const SideBar = () => {
 	}, [deals]);
 
 	return (
-		<Grid container boxShadow={2} sx={styles.container}>
+		<Grid container boxShadow={2} spacing={2} sx={styles.container}>
+			<Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+				<Sorter />
+			</Grid>
 			<Grid item xs={12}>
 				<OptionGroup options={categories} title="Product Types" />
 			</Grid>

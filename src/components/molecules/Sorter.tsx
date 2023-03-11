@@ -18,7 +18,7 @@ const Sorter = () => {
 		dispatch(setFilteredDeals(sortDeals(filteredDeals, event.target.value)));
 	};
 	return (
-		<Box sx={{ minWidth: 120 }}>
+		<Box sx={{ width: "120px" }}>
 			<FormControl fullWidth>
 				<InputLabel id="select-label">Sort By</InputLabel>
 				<Select
