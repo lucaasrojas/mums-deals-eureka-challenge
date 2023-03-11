@@ -4,6 +4,8 @@ import { GridCardProps } from "../../types";
 const styles = {
 	container: {
 		display: "flex",
+		justifyContent: "center",
+		alignContent: "center",
 		minHeight: "200px",
 		minWidth: 200,
 		height: "fit-content",
@@ -15,7 +17,7 @@ const styles = {
         0.3px 3.7px 4.2px -1.7px hsl(0deg 0% 63% / 0.36),
         0.8px 9px 10.2px -2.5px hsl(0deg 0% 63% / 0.36);`,
 	},
-	box: { width: 200, height: "100%" },
+	box: { width: "100%", height: "100%", maxWidth: 200 },
 	title: {
 		height: "fit-content",
 	},
@@ -27,18 +29,18 @@ const ListCard: React.FC<GridCardProps> = (props) => {
 	const { image, title, product_type, quantitySold } = props.deal;
 	return (
 		<Grid container spacing={2} sx={styles.container}>
-			<Grid item xs={12} md={2} sx={styles.box}>
+			<Box sx={styles.box}>
 				<img
 					src={image.src}
 					alt={title}
 					style={{
 						width: "100%",
 						height: "100%",
+						maxHeight: 180,
 						objectFit: "contain",
-						margin: "auto",
 					}}
 				/>
-			</Grid>
+			</Box>
 			<Grid
 				item
 				xs={12}

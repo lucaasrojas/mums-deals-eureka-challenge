@@ -5,9 +5,9 @@ import ActionBar from "../molecules/ActionBar";
 import ResultList from "./ResultList";
 
 const styles = {
-	container: { display: "flex", paddingLeft: "300px" },
+	container: { display: "flex", paddingLeft: "300px", paddingTop: "50px" },
 	title_wrapper: {
-		height: 120,
+		minHeight: 120,
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
@@ -24,7 +24,7 @@ const DealsPage = () => {
 					<Typography variant="h2">Mum's Deal Page</Typography>
 				</Grid>
 				<Grid container spacing={2} sx={{ height: "100%" }}>
-					<Grid item xs container spacing={2} sx={{ display: "flex" }}>
+					<Grid item xs container spacing={6} sx={{ display: "flex" }}>
 						<Grid item xs={12}>
 							<ActionBar />
 						</Grid>

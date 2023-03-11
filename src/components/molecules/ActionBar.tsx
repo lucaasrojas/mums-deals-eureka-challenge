@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 
 import { useSelector } from "react-redux";
 import { State } from "../../types";
@@ -8,7 +8,7 @@ import Sorter from "./Sorter";
 
 const styles = {
 	box: {
-		height: "40px",
+		minHeight: "40px",
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "space-between",
@@ -20,12 +20,14 @@ const styles = {
 const ActionBar = () => {
 	const { deals } = useSelector((state: State) => state);
 	return (
-		<Box sx={styles.box}>
-			<Typography>Available Deals: {deals.length}</Typography>
-			<Box sx={styles.buttons}>
+		<Grid container sx={styles.box}>
+			<Grid item>
+				<Typography>Available Deals: {deals.length}</Typography>
+			</Grid>
+			<Grid item sx={styles.buttons}>
 				<ViewSelector />
-			</Box>
-		</Box>
+			</Grid>
+		</Grid>
 	);
 };
 
