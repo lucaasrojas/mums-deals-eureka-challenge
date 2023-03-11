@@ -5,13 +5,13 @@ import WindowIcon from "@mui/icons-material/Window";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_TYPES, State, VIEW_TYPES } from "../state/reducers";
 const ActionBar = () => {
-	const view = useSelector((state: State) => state.view);
+	const { view, deals } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
 	return (
 		<Box
 			sx={{ height: "40px", display: "flex", justifyContent: "space-between" }}
 		>
-			<Typography>Available Deals: </Typography>
+			<Typography>Available Deals: {deals.length}</Typography>
 			<Box sx={{ display: "flex", flexDirection: "row" }}>
 				<Box>
 					<Button

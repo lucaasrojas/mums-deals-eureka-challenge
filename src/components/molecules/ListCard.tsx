@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { Deal } from "../ResultList";
+import { Deal } from "../../state/reducers";
+
 interface GridCardProps {
 	deal: Deal;
 }

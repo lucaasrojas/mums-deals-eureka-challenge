@@ -5,7 +5,7 @@ import ActionBar from "./ActionBar";
 import ResultList from "./ResultList";
 const DealsPage = () => {
 	return (
-		<Paper sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+		<Grid container sx={{ display: "flex" }}>
 			<Box
 				style={{
 					height: 120,
@@ -27,7 +27,7 @@ const DealsPage = () => {
 					</Grid>
 				</Grid>
 			</Grid>
-		</Paper>
+		</Grid>
 	);
 };
 
