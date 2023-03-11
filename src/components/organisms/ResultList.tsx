@@ -4,7 +4,8 @@ import { getDeals } from "../../api";
 import GridCard from "../molecules/GridCard";
 import { useDispatch, useSelector } from "react-redux";
 import ListCard from "../molecules/ListCard";
-import { State, ACTION_TYPES, Deal, VIEW_TYPES } from "../../types";
+import { State, Deal, VIEW_TYPES } from "../../types";
+import { setDeals, setFilteredDeals } from "../../state/actions";
 
 const ResultList = () => {
 	const dispatch = useDispatch();
@@ -13,8 +14,8 @@ const ResultList = () => {
 	React.useEffect(() => {
 		setIsLoading(true);
 		getDeals().then((res) => {
-			dispatch({ type: ACTION_TYPES.SET_ORIGINAL_DEALS, payload: res.data });
-			dispatch({ type: ACTION_TYPES.SET_FILTERED_DEALS, payload: res.data });
+			dispatch(setDeals(res.data));
+			dispatch(setFilteredDeals(res.data));
 			setIsLoading(false);
 		});
 	}, []);

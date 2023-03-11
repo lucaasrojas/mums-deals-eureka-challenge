@@ -5,11 +5,12 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useDispatch, useSelector } from "react-redux";
-import { State, ACTION_TYPES, Deal } from "../../types";
-import { toCamelCase } from "../../utils";
+import { State, Deal } from "../../types";
+import { sortDeals, toCamelCase } from "../../utils";
+import { setFilteredDeals, setSortBy } from "../../state/actions";
 
 const OptionGroup = (props) => {
-	const { deals } = useSelector((state: State) => state);
+	const { deals, sortBy } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
 	const [selected, setSelected] = React.useState<string>();
 	const { title, options } = props;
@@ -18,7 +19,7 @@ const OptionGroup = (props) => {
 		const name = e.target.name;
 		if (name === selected) {
 			setSelected("");
-			dispatch({ type: ACTION_TYPES.SET_FILTERED_DEALS, payload: deals });
+			dispatch(setFilteredDeals(sortDeals(deals, sortBy)));
 		} else {
 			setSelected(name);
 
@@ -27,11 +28,7 @@ const OptionGroup = (props) => {
 					return deal;
 				}
 			});
-
-			dispatch({
-				type: ACTION_TYPES.SET_FILTERED_DEALS,
-				payload: filteredDeals,
-			});
+			dispatch(setFilteredDeals(sortDeals(filteredDeals, sortBy)));
 		}
 	};
 	return (

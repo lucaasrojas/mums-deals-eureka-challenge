@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { VIEW_TYPES, ACTION_TYPES, State } from "../../types";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import WindowIcon from "@mui/icons-material/Window";
+import { setGridView, setListView } from "../../state/actions";
 const ViewSelector = () => {
 	const { view, deals } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
@@ -12,8 +13,7 @@ const ViewSelector = () => {
 			<Button
 				sx={{ color: view === VIEW_TYPES.GRID ? "black" : "grey" }}
 				onClick={() => {
-					if (view !== VIEW_TYPES.GRID)
-						dispatch({ type: ACTION_TYPES.SET_GRID_VIEW });
+					if (view !== VIEW_TYPES.GRID) dispatch(setGridView());
 				}}
 			>
 				<WindowIcon />
@@ -21,8 +21,7 @@ const ViewSelector = () => {
 			<Button
 				sx={{ color: view === VIEW_TYPES.LIST ? "black" : "grey" }}
 				onClick={() => {
-					if (view !== VIEW_TYPES.LIST)
-						dispatch({ type: ACTION_TYPES.SET_LIST_VIEW });
+					if (view !== VIEW_TYPES.LIST) dispatch(setListView());
 				}}
 			>
 				<ViewListIcon />

@@ -4,65 +4,18 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { ACTION_TYPES, SORT_LABELS, SORT_OPTIONS, State } from "../../types";
+import { SORT_LABELS, SORT_OPTIONS, State } from "../../types";
 import { useDispatch, useSelector } from "react-redux";
+import { setFilteredDeals, setSortBy } from "../../state/actions";
+import { sortDeals } from "../../utils";
 
 const Sorter = () => {
 	const { sortBy, filteredDeals } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
 
-	React.useEffect(() => {
-		sortDeals();
-	}, [sortBy]);
-
-	const sortDeals = useCallback(() => {
-		const newFilteredDeals = [...filteredDeals];
-		switch (sortBy) {
-			case SORT_OPTIONS.ASC:
-				newFilteredDeals.sort((a, b) => {
-					if (a.title < b.title) return -1;
-					if (a.title > b.title) return 1;
-					return 0;
-				});
-				break;
-			case SORT_OPTIONS.DESC:
-				newFilteredDeals.sort((a, b) => {
-					if (a.title < b.title) return 1;
-					if (a.title > b.title) return -1;
-					return 0;
-				});
-				break;
-			case SORT_OPTIONS.HIGHER_PRICE:
-				newFilteredDeals.sort((a, b) => {
-					const aPrices = a.variants.map((x) => x.price * 1);
-					const bPrices = b.variants.map((x) => x.price * 1);
-					if (Math.max(...aPrices) > Math.max(...bPrices)) return 1;
-					if (Math.max(...aPrices) < Math.max(...bPrices)) return -1;
-					return 0;
-				});
-				break;
-			case SORT_OPTIONS.LOWER_PRICE:
-				newFilteredDeals.sort((a, b) => {
-					const aPrices = a.variants.map((x) => x.price * 1);
-					const bPrices = b.variants.map((x) => x.price * 1);
-					if (Math.max(...aPrices) > Math.max(...bPrices)) return -1;
-					if (Math.max(...aPrices) < Math.max(...bPrices)) return 1;
-					return 0;
-				});
-				break;
-		}
-
-		dispatch({
-			type: ACTION_TYPES.SET_FILTERED_DEALS,
-			payload: newFilteredDeals,
-		});
-	}, [filteredDeals, sortBy]);
-
 	const handleChange = (event: SelectChangeEvent) => {
-		dispatch({
-			type: ACTION_TYPES.SET_SORT_BY,
-			payload: event.target.value as string,
-		});
+		dispatch(setSortBy(event.target.value as SORT_OPTIONS));
+		dispatch(setFilteredDeals(sortDeals(filteredDeals, event.target.value)));
 	};
 	return (
 		<Box sx={{ minWidth: 120 }}>
