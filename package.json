@@ -1,0 +1,35 @@
+{
+    "name": "base-react-redux-ts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.tsx",
+    "scripts": {
+        "start": "webpack-dev-server --open --hot --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@reduxjs/toolkit": "^1.9.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5",
+        "redux": "^4.2.1",
+        "typescript": "^4.9.5",
+        "webpack-dev-server": "^4.11.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/preset-react": "^7.18.6",
+        "@babel/preset-typescript": "^7.21.0",
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "babel-loader": "^9.1.2",
+        "html-webpack-plugin": "^5.5.0",
+        "ts-loader": "^9.4.2",
+        "webpack": "^5.76.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-merge": "^5.8.0"
+    }
+}
