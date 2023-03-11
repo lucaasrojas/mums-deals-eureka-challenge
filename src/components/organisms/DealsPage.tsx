@@ -1,24 +1,26 @@
 import React from "react";
-import { Grid, Typography, Paper, Box } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import SideBar from "./SideBar";
-import ActionBar from "./ActionBar";
+import ActionBar from "../ActionBar";
 import ResultList from "./ResultList";
+
+const styles = {
+	container: { display: "flex", paddingLeft: "300px" },
+	title_wrapper: {
+		height: 120,
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+};
+
 const DealsPage = () => {
 	return (
 		<>
 			<SideBar />
 
-			<Grid container sx={{ display: "flex", paddingLeft: "300px" }}>
-				<Grid
-					item
-					xs={12}
-					style={{
-						height: 120,
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
+			<Grid container sx={styles.container}>
+				<Grid item xs={12} style={styles.title_wrapper}>
 					<Typography variant="h2">Mum's Deal Page</Typography>
 				</Grid>
 				<Grid container spacing={2} sx={{ height: "100%" }}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "../state/stores";
-import DealsPage from "./DealsPage";
+import DealsPage from "./organisms/DealsPage";
 import "./App.css";
 
 const App: React.FC = () => {

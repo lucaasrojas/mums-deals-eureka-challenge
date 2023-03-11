@@ -1,8 +1,21 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { useSelector } from "react-redux";
-import OptionGroup from "./molecules/OptionGroup";
-import { State, Deal } from "../types";
+import OptionGroup from "../molecules/OptionGroup";
+import { State, Deal } from "../../types";
+
+const styles = {
+	container: {
+		padding: 2,
+		display: "flex",
+		alignContent: "center",
+		position: "fixed",
+		top: 0,
+		left: 0,
+		width: "250px",
+		height: "100%",
+	},
+};
 
 const SideBar = () => {
 	const { deals } = useSelector((state: State) => state);
@@ -19,20 +32,7 @@ const SideBar = () => {
 	}, [deals]);
 
 	return (
-		<Grid
-			container
-			boxShadow={2}
-			sx={{
-				padding: 2,
-				display: "flex",
-				alignContent: "center",
-				position: "fixed",
-				top: 0,
-				left: 0,
-				width: "250px",
-				height: "100%",
-			}}
-		>
+		<Grid container boxShadow={2} sx={styles.container}>
 			<Grid item xs={12}>
 				<OptionGroup options={categories} title="Product Types" />
 			</Grid>

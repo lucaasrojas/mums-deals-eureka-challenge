@@ -4,13 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import {
-	ACTION_TYPES,
-	Deal,
-	SORT_LABELS,
-	SORT_OPTIONS,
-	State,
-} from "../../types";
+import { ACTION_TYPES, SORT_LABELS, SORT_OPTIONS, State } from "../../types";
 import { useDispatch, useSelector } from "react-redux";
 
 const Sorter = () => {
@@ -73,10 +67,10 @@ const Sorter = () => {
 	return (
 		<Box sx={{ minWidth: 120 }}>
 			<FormControl fullWidth>
-				<InputLabel id="demo-simple-select-label">Sort By</InputLabel>
+				<InputLabel id="select-label">Sort By</InputLabel>
 				<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
+					labelId="select-label"
+					id="simple-select"
 					value={sortBy || ""}
 					label="Sort By"
 					onChange={handleChange}
