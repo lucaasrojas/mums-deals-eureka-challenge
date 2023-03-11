@@ -1,9 +1,10 @@
-import { State, VIEW_TYPES, ACTION_TYPES } from "../../types";
+import { State, VIEW_TYPES, ACTION_TYPES, SORT_OPTIONS } from "../../types";
 
 const initialState: State = {
 	view: VIEW_TYPES.GRID,
 	deals: [],
 	filteredDeals: [],
+	sortBy: undefined,
 };
 
 function Reducer(
@@ -40,6 +41,11 @@ function Reducer(
 			return {
 				...state,
 				filteredDeals: [],
+			};
+		case ACTION_TYPES.SET_SORT_BY:
+			return {
+				...state,
+				sortBy: action.payload,
 			};
 		default:
 			return state;

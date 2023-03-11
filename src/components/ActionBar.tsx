@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import WindowIcon from "@mui/icons-material/Window";
-import { useDispatch, useSelector } from "react-redux";
-import { State, VIEW_TYPES, ACTION_TYPES } from "../types";
+
+import { useSelector } from "react-redux";
+import { State } from "../types";
+import ViewSelector from "./molecules/ViewSelector";
+import Sorter from "./molecules/Sorter";
 const ActionBar = () => {
-	const { view, deals } = useSelector((state: State) => state);
-	const dispatch = useDispatch();
+	const { deals } = useSelector((state: State) => state);
 	return (
 		<Box
 			sx={{
@@ -18,30 +18,9 @@ const ActionBar = () => {
 			}}
 		>
 			<Typography>Available Deals: {deals.length}</Typography>
-			<Box sx={{ display: "flex", flexDirection: "row" }}>
-				<Box>
-					<Button
-						sx={{ color: view === VIEW_TYPES.GRID ? "black" : "grey" }}
-						onClick={() => {
-							if (view !== VIEW_TYPES.GRID)
-								dispatch({ type: ACTION_TYPES.SET_GRID_VIEW });
-						}}
-					>
-						<WindowIcon />
-					</Button>
-					<Button
-						sx={{ color: view === VIEW_TYPES.LIST ? "black" : "grey" }}
-						onClick={() => {
-							if (view !== VIEW_TYPES.LIST)
-								dispatch({ type: ACTION_TYPES.SET_LIST_VIEW });
-						}}
-					>
-						<ViewListIcon />
-					</Button>
-				</Box>
-				<Box>
-					<Typography>Sort Results</Typography>
-				</Box>
+			<Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+				<ViewSelector />
+				<Sorter />
 			</Box>
 		</Box>
 	);
