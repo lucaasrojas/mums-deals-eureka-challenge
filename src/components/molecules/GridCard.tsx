@@ -7,7 +7,7 @@ const styles = {
 		display: "flex",
 		padding: "10px",
 		borderRadius: 3,
-		height: 400,
+		minHeight: 400,
 		border: "1px solid hsl(0deg 0% 63% / 0.36)",
 		boxShadow: `0px 0.5px 0.6px hsl(0deg 0% 63% / 0.36),
     0.1px 1.5px 1.7px -0.8px hsl(0deg 0% 63% / 0.36),

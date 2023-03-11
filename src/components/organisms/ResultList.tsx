@@ -35,7 +35,7 @@ const ResultList = () => {
 			) : (
 				filteredDeals.map((deal: Deal) => {
 					return view === VIEW_TYPES.GRID ? (
-						<Grid item xs={3}>
+						<Grid item xs={12} md={4} xl={3}>
 							<GridCard deal={deal} />
 						</Grid>
 					) : (
