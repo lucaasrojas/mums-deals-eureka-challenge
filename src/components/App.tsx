@@ -1,15 +1,15 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "../state/stores";
-import ToggleTheme from "./ToggleTheme";
+import DealsPage from "./DealsPage";
+import "./App.css";
 
 const App: React.FC = () => {
-    return (
-        <Provider store={store}>
-            <h1>App</h1>
-            <ToggleTheme />
-        </Provider>
-    );
+	return (
+		<Provider store={store}>
+			<DealsPage />
+		</Provider>
+	);
 };
 
 export default App;
