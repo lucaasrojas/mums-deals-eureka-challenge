@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import SideBar from "./SideBar";
-import ActionBar from "../ActionBar";
+import ActionBar from "../molecules/ActionBar";
 import ResultList from "./ResultList";
 
 const styles = {

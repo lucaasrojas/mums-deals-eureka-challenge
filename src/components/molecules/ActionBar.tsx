@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { useSelector } from "react-redux";
-import { State } from "../types";
-import ViewSelector from "./molecules/ViewSelector";
-import Sorter from "./molecules/Sorter";
+import { State } from "../../types";
+import ViewSelector from "./ViewSelector";
+import Sorter from "./Sorter";
 
 const styles = {
 	box: {
