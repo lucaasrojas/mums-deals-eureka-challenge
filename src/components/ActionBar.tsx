@@ -1,15 +1,21 @@
 import React from "react";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import WindowIcon from "@mui/icons-material/Window";
 import { useDispatch, useSelector } from "react-redux";
-import { ACTION_TYPES, State, VIEW_TYPES } from "../state/reducers";
+import { State, VIEW_TYPES, ACTION_TYPES } from "../types";
 const ActionBar = () => {
 	const { view, deals } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
 	return (
 		<Box
-			sx={{ height: "40px", display: "flex", justifyContent: "space-between" }}
+			sx={{
+				height: "40px",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "space-between",
+				padding: 2,
+			}}
 		>
 			<Typography>Available Deals: {deals.length}</Typography>
 			<Box sx={{ display: "flex", flexDirection: "row" }}>

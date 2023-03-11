@@ -1,32 +1,43 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { Deal } from "../../state/reducers";
+import { GridCardProps } from "../../types";
 
-interface GridCardProps {
-	deal: Deal;
-}
 const ListCard: React.FC<GridCardProps> = (props) => {
-	const { image, title, product_type } = props.deal;
+	const { image, title, product_type, quantitySold } = props.deal;
 	return (
-		<Box>
-			<Grid container spacing={2}>
-				<Grid item xs={4}>
-					<img
-						src={image.src}
-						alt={title}
-						style={{ width: "100%", height: 70, objectFit: "contain" }}
-					/>
+		<Grid
+			container
+			spacing={2}
+			sx={{
+				display: "flex",
+				height: 200,
+				padding: "10px",
+				borderRadius: 3,
+				border: "1px solid hsl(0deg 0% 63% / 0.36)",
+				boxShadow: `0px 0.5px 0.6px hsl(0deg 0% 63% / 0.36),
+        0.1px 1.5px 1.7px -0.8px hsl(0deg 0% 63% / 0.36),
+        0.3px 3.7px 4.2px -1.7px hsl(0deg 0% 63% / 0.36),
+        0.8px 9px 10.2px -2.5px hsl(0deg 0% 63% / 0.36);`,
+			}}
+		>
+			<Box sx={{ width: 200, height: "100%" }}>
+				<img
+					src={image.src}
+					alt={title}
+					style={{ width: "100%", height: "100%", objectFit: "contain" }}
+				/>
+			</Box>
+			<Grid item xs container sx={{ display: "flex", alignContent: "start" }}>
+				<Grid item xs={12} sx={{ height: "fit-content" }}>
+					<Typography variant="h5">{title}</Typography>
 				</Grid>
-				<Grid item xs container>
-					<Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-						<Typography>{title}</Typography>
-					</Grid>
-					<Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-						<Typography>{product_type}</Typography>
-					</Grid>
+				<Grid item xs={12} sx={{ height: "fit-content" }}>
+					<Typography variant="overline">
+						{product_type} | Quantity Sold: {quantitySold}
+					</Typography>
 				</Grid>
 			</Grid>
-		</Box>
+		</Grid>
 	);
 };
 

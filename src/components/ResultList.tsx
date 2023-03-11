@@ -3,8 +3,8 @@ import { Box, Grid } from "@mui/material";
 import { getDeals } from "../api";
 import GridCard from "./molecules/GridCard";
 import { useDispatch, useSelector } from "react-redux";
-import { ACTION_TYPES, Deal, State, VIEW_TYPES } from "../state/reducers";
 import ListCard from "./molecules/ListCard";
+import { State, ACTION_TYPES, Deal, VIEW_TYPES } from "../types";
 
 const ResultList = () => {
 	const dispatch = useDispatch();
@@ -17,21 +17,19 @@ const ResultList = () => {
 	}, []);
 
 	return (
-		<Box style={{ flex: "1" }}>
-			<Grid container spacing={2}>
-				{filteredDeals.map((deal: Deal) => {
-					return (
-						<Grid item xs={3}>
-							{view === VIEW_TYPES.GRID ? (
-								<GridCard deal={deal} />
-							) : (
-								<ListCard deal={deal} />
-							)}
-						</Grid>
-					);
-				})}
-			</Grid>
-		</Box>
+		<Grid container spacing={4} sx={{ padding: 2 }}>
+			{filteredDeals.map((deal: Deal) => {
+				return view === VIEW_TYPES.GRID ? (
+					<Grid item xs={3}>
+						<GridCard deal={deal} />
+					</Grid>
+				) : (
+					<Grid item xs={12}>
+						<ListCard deal={deal} />
+					</Grid>
+				);
+			})}
+		</Grid>
 	);
 };
 

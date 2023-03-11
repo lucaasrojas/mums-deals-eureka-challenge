@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useSelector } from "react-redux";
-import { Deal, State } from "../state/reducers";
 import OptionGroup from "./molecules/OptionGroup";
+import { State, Deal } from "../types";
+
 const SideBar = () => {
 	const { deals } = useSelector((state: State) => state);
 	const [categories, setCategories] = React.useState<string[]>([]);
@@ -18,10 +19,20 @@ const SideBar = () => {
 	}, [deals]);
 
 	return (
-		<Grid container>
-			<Grid item xs={12}>
-				<Typography>Filter Results</Typography>
-			</Grid>
+		<Grid
+			container
+			boxShadow={2}
+			sx={{
+				padding: 2,
+				display: "flex",
+				alignContent: "center",
+				position: "fixed",
+				top: 0,
+				left: 0,
+				width: "250px",
+				height: "100%",
+			}}
+		>
 			<Grid item xs={12}>
 				<OptionGroup options={categories} title="Product Types" />
 			</Grid>

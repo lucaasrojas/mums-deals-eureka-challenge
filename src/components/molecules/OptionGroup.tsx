@@ -3,15 +3,17 @@ import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
 import Checkbox from "@mui/material/Checkbox";
 import { useDispatch, useSelector } from "react-redux";
-import { ACTION_TYPES, Deal, State } from "../../state/reducers";
+import { State, ACTION_TYPES, Deal } from "../../types";
+import { toCamelCase } from "../../utils";
+
 const OptionGroup = (props) => {
 	const { deals } = useSelector((state: State) => state);
 	const dispatch = useDispatch();
 	const [selected, setSelected] = React.useState<string>();
 	const { title, options } = props;
+
 	const handleChange = (e) => {
 		const name = e.target.name;
 		if (name === selected) {
@@ -25,6 +27,7 @@ const OptionGroup = (props) => {
 					return deal;
 				}
 			});
+
 			dispatch({
 				type: ACTION_TYPES.SET_FILTERED_DEALS,
 				payload: filteredDeals,
@@ -44,7 +47,7 @@ const OptionGroup = (props) => {
 								name={option}
 							/>
 						}
-						label={option}
+						label={toCamelCase(option)}
 					/>
 				))}
 			</FormGroup>

@@ -5,29 +5,34 @@ import ActionBar from "./ActionBar";
 import ResultList from "./ResultList";
 const DealsPage = () => {
 	return (
-		<Grid container sx={{ display: "flex" }}>
-			<Box
-				style={{
-					height: 120,
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
-				<Typography>Mum's Deal Page</Typography>
-			</Box>
-			<Grid container sx={{ height: "100%" }}>
-				<Grid item xs={2}>
-					<SideBar />
+		<>
+			<SideBar />
+
+			<Grid container sx={{ display: "flex", paddingLeft: "300px" }}>
+				<Grid
+					item
+					xs={12}
+					style={{
+						height: 120,
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
+					<Typography variant="h2">Mum's Deal Page</Typography>
 				</Grid>
-				<Grid item xs container>
-					<Grid item xs={12} sx={{ display: "flex", flexDirection: "column" }}>
-						<ActionBar />
-						<ResultList />
+				<Grid container spacing={2} sx={{ height: "100%" }}>
+					<Grid item xs container spacing={2} sx={{ display: "flex" }}>
+						<Grid item xs={12}>
+							<ActionBar />
+						</Grid>
+						<Grid item xs={12}>
+							<ResultList />
+						</Grid>
 					</Grid>
 				</Grid>
 			</Grid>
-		</Grid>
+		</>
 	);
 };
 
